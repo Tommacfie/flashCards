@@ -1,49 +1,31 @@
 import { server } from '../config';
-import { ThoughtRecordType } from '../types/types';
+import { flashCardType } from '../types/types';
 
-export const getThoughtRecords = async () => {
+export const getFlashCards = async () => {
   try {
-    const response = await fetch(server + '/thoughtRecords', {});
-    const thoughtRecords = await response.json();
-    return thoughtRecords;
+    const response = await fetch(server + '/flashCards');
+    const flashCards = await response.json();
+    console.log(flashCards);
+
+    return flashCards;
   } catch (error) {
     console.log('Error:', error);
   }
 };
 
-export const getThoughtRecordById = async (id: string) => {
+export const postFlashCard = async (flashCard: flashCardType) => {
   try {
-    const response = await fetch(server + `/thoughtRecord?id=${id}`);
-    const thoughtRecord = await response.json();
-    return thoughtRecord;
-  } catch (error) {
-    console.log('Error:', error);
-  }
-};
-
-export const postThoughtRecord = async (thoughtRecord: ThoughtRecordType) => {
-  try {
-    const response = await fetch(server + '/thoughtRecord', {
+    const response = await fetch(server + '/flashCard', {
       method: 'POST',
-      body: JSON.stringify(thoughtRecord),
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(flashCard),
     });
-    const newThoughtRecord = await response.json();
-    return newThoughtRecord;
-  } catch (error) {
-    console.log('Error:', error);
-  }
-};
+    const newFlashCard = await response.json();
+    console.log(newFlashCard);
 
-export const updateThoughtRecordById = async (
-  thoughtRecordChanges: Partial<ThoughtRecordType>
-) => {
-  try {
-    const response = await fetch(server + '/thoughtRecord', {
-      method: 'PUT',
-      body: JSON.stringify(thoughtRecordChanges),
-    });
-    const updatedThoughtRecord = await response.json();
-    return updatedThoughtRecord;
+    return newFlashCard;
   } catch (error) {
     console.log('Error:', error);
   }

@@ -1,11 +1,48 @@
-import { ThoughtRecordContextProvider } from './context/thoughtRecordContext';
-import MainViewPage from './pages/mainView/MainViewPage';
+import CreateFlashCard from './components/CreateFlashCard';
+import FlashCardsContainer from './containers/FlashCardsContainer';
+import MainViewContainer from './containers/MainViewContainer';
+import { useFlashCardContext } from './context/FlashCardsContext';
+import { EnumTab } from './types/types';
 
 const App = () => {
+  const { currentTab, setCurrentTab } = useFlashCardContext();
+
+  const getCurrentTab = () => {
+    switch (currentTab) {
+      case EnumTab.LIST:
+        return (
+          <MainViewContainer>
+            <FlashCardsContainer />
+          </MainViewContainer>
+        );
+      case EnumTab.CREATE:
+        return (
+          <MainViewContainer>
+            <CreateFlashCard />
+          </MainViewContainer>
+        );
+    }
+  };
+
   return (
-    <ThoughtRecordContextProvider>
-      <MainViewPage />
-    </ThoughtRecordContextProvider>
+    <MainViewContainer>
+      <div>
+        <button
+          onClick={() => {
+            if (currentTab === EnumTab.LIST) {
+              setCurrentTab(EnumTab.CREATE);
+            }
+            if (currentTab === EnumTab.CREATE) {
+              setCurrentTab(EnumTab.LIST);
+            }
+          }}
+        >
+          Set Mode
+        </button>
+
+        {getCurrentTab()}
+      </div>
+    </MainViewContainer>
   );
 };
 

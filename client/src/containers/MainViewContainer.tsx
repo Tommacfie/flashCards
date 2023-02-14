@@ -1,10 +1,11 @@
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 
 const MainViewContainer = ({
   children,
 }: {
   children: ReactElement | ReactElement[];
 }) => {
-  return <>{children}</>;
+  return <div className="h-screen w-screen">{children}</div>;
 };
+
 export default MainViewContainer;
