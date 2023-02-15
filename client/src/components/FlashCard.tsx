@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { flashCardType } from '../types/types';
+import { useState } from 'react';
+import { FlashCardType } from '../types/types';
 
-const FlashCard = ({ flashCard }: { flashCard: flashCardType }) => {
+const FlashCard = ({ flashCard }: { flashCard: FlashCardType }) => {
   const [revealAnswer, setRevealAnswer] = useState(false);
   return (
     <div className="w-2/3 mx-auto flex flex-col text-center border min-h-min p-2 m-2">

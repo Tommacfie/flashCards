@@ -9,11 +9,11 @@ import {
 } from 'react';
 
 import { getFlashCards } from '../services/apiService';
-import { EnumTab, flashCardType } from '../types/types';
+import { EnumTab, FlashCardType } from '../types/types';
 
 export type FlashCardContextType = {
-  flashCards: flashCardType[];
-  setFlashCards: Dispatch<SetStateAction<flashCardType[]>>;
+  flashCards: FlashCardType[];
+  setFlashCards: Dispatch<SetStateAction<FlashCardType[]>>;
   currentTab: EnumTab;
   setCurrentTab: Dispatch<SetStateAction<EnumTab>>;
 };
@@ -34,12 +34,12 @@ export const FlashCardContextProvider = ({
 }: {
   children: ReactElement | ReactElement[];
 }) => {
-  const [flashCards, setFlashCards] = useState<flashCardType[]>([]);
+  const [flashCards, setFlashCards] = useState<FlashCardType[]>([]);
   const [currentTab, setCurrentTab] = useState<EnumTab>(EnumTab.LIST);
 
   useEffect(() => {
     const fetchItems = async () => {
-      const newflashCards: flashCardType[] = await getFlashCards();
+      const newflashCards: FlashCardType[] = await getFlashCards();
       setFlashCards(newflashCards);
     };
     fetchItems();

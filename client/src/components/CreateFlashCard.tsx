@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { postFlashCard } from '../services/apiService';
-import { flashCardType } from '../types/types';
+import { FlashCardType } from '../types/types';
 
 const initialValues = {
   title: '',
@@ -9,7 +9,7 @@ const initialValues = {
 };
 
 const CreateFlashCard = () => {
-  const [flashCard, setFlashCard] = useState<flashCardType>(initialValues);
+  const [flashCard, setFlashCard] = useState<FlashCardType>(initialValues);
 
   return (
     <div className="w-full p-10 border text-center">

@@ -1,5 +1,5 @@
 import { server } from '../config';
-import { flashCardType } from '../types/types';
+import { FlashCardType } from '../types/types';
 
 export const getFlashCards = async () => {
   try {
@@ -13,7 +13,7 @@ export const getFlashCards = async () => {
   }
 };
 
-export const postFlashCard = async (flashCard: flashCardType) => {
+export const postFlashCard = async (flashCard: FlashCardType) => {
   try {
     const response = await fetch(server + '/flashCard', {
       method: 'POST',

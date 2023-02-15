@@ -1,4 +1,4 @@
-export type flashCardType = {
+export type FlashCardType = {
   _id?: string;
   title: string;
   question: string;
