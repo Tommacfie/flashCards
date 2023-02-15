@@ -20,4 +20,5 @@ const FlashCard = ({ flashCard }: { flashCard: FlashCardType }) => {
     </div>
   );
 };
+
 export default FlashCard;
