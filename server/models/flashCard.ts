@@ -1,12 +1,12 @@
 import mongoose from './index';
 const { Schema, model } = mongoose;
 
-export const flashCardSchema = new Schema({
+const flashCardSchema = new Schema({
   title: String,
   question: String,
   answer: String,
 });
 
-const Mood = model('flashCard', flashCardSchema);
+const FlashCard = model('flashCard', flashCardSchema);
 
-export default Mood;
+export default FlashCard;
